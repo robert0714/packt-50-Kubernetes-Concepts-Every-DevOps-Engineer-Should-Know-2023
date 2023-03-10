@@ -2,8 +2,17 @@
 `kubectl create namespace argocd`
 
 2. Install Argo
-`kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/ha/install.yaml`
-
+   * In Production , k8s cluster has more than 3 nodes:
+     ```shell
+      kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/ha/install.yaml
+     ``` 
+   * [In Minikube](https://redhat-scholars.github.io/argocd-tutorial/argocd-tutorial/01-setup.html#install_argocd):     
+     ```shell
+      minikube addons enable ingress 
+      kubectl create namespace argocd
+      kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+      watch kubectl get pods -n argocd
+     ```   
 3. Get the initial admin password
 `kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
 
