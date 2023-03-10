@@ -8,6 +8,7 @@
      ``` 
    * [In Minikube](https://redhat-scholars.github.io/argocd-tutorial/argocd-tutorial/01-setup.html#install_argocd):     
      ```shell
+      minikube start --memory=8192 --cpus=3
       minikube addons enable ingress 
       kubectl create namespace argocd
       kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
